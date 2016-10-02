@@ -35,6 +35,10 @@
     <name>espd-web Maven Webapp</name>
     <url>https://www.ec.europa.eu/growth/tools-databases/espd</url>
 
+    <properties>
+        <thymeleaf.version>3.0.1.RELEASE</thymeleaf.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>eu.europa.ec.grow.espd</groupId>
@@ -42,8 +46,23 @@
             <version>${espd-exchange-model.version}</version>
         </dependency>
         <dependency>
+            <groupId>eu.europa.ec.grow.espd</groupId>
+            <artifactId>espd-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>thymeleaf-layout-dialect</artifactId>
+                    <groupId>nz.net.ultraq.thymeleaf</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -58,12 +77,12 @@
             <artifactId>tomcat-embed-jasper</artifactId>
         </dependency>
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
