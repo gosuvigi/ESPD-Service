@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import {Provider} from 'react-redux'
 import './index.css'
 import WizardForm from './WizardForm'
+// import App from './App'
 import {createStore, combineReducers} from 'redux'
 import {reducer as formReducer} from 'redux-form'
 
