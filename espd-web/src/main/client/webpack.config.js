@@ -9,8 +9,7 @@ var webpack = require('webpack');
 module.exports = {
     devtool: 'eval',
     entry: [
-        'webpack-dev-server/client?http://0.0.0.0:3000',
-        'webpack/hot/only-dev-server',
+        require.resolve('react-dev-utils/webpackHotDevClient'),
         __dirname + "/src/index.js"
     ],
     output: {
@@ -28,13 +27,9 @@ module.exports = {
             },
             {
                 test: /\.jsx?$/,
-                loader: 'babel',
+                loaders: ['babel'],
                 exclude: /node_modules/,
-                include: path.join(__dirname, 'src'),
-                query: {
-                    presets: ['es2015', 'stage-0', 'react'],
-                    plugins: ['react-hot-loader/babel']
-                }
+                include: path.join(__dirname, 'src')
             },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.

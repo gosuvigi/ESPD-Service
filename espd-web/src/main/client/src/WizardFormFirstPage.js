@@ -36,8 +36,7 @@ const WizardFormFirstPage = (props) => {
                 <button type="submit" className="next">Next</button>
             </div>
             <div>
-                <label>Favorite Color</label>
-                <div>aaaa</div>
+                <label>Favorite Colors</label>
                 <Field
                     name="favoriteColor"
                     component={renderDropdownList}
