@@ -14,7 +14,7 @@ class ApiController {
 
     @GetMapping("/api/test")
     List<String> apiTest() {
-      return Arrays.asList("hodor", "HODOR");
+      return Arrays.asList("hodor", "HODOR", "Hodor??");
     }
 
 }

@@ -19,6 +19,11 @@ var publicUrl = '';
 // Get enrivonment variables to inject into our app.
 var env = getClientEnvironment(publicUrl);
 
+var packageJSON = require('../package.json');
+const PATHS = {
+  build: path.join(__dirname, 'target', 'classes', 'META-INF', 'resources', 'webjars', packageJSON.name, packageJSON.version)
+};
+
 // This is the development configuration.
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
@@ -53,7 +58,7 @@ module.exports = {
   ],
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
-    path: paths.appBuild,
+    path: PATHS.build,
     // Add /* filename */ comments to generated require()s in the output.
     pathinfo: true,
     // This does not produce a real file. It's just the virtual path that is
@@ -61,7 +66,7 @@ module.exports = {
     // containing code from all our entry points, and the Webpack runtime.
     filename: 'bundle.js',
     // This is the URL that app is served from. We use "/" in development.
-    publicPath: 'http://localhost:3000/'
+    publicPath: '/assets/'
   },
   resolve: {
     // This allows you to set a fallback for where Webpack should look for modules.

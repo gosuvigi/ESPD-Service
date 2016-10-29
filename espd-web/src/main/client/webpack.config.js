@@ -13,9 +13,8 @@ module.exports = {
         __dirname + "/src/index.js"
     ],
     output: {
-        path: path.join(__dirname, 'dist'),
-        filename: "bundle.js",
-        publicPath: '/static/'
+        path: '../../../target/classes/static/',
+        filename: "bundle.js"
     },
 
     module: {
@@ -73,7 +72,7 @@ module.exports = {
         // new HtmlWebpackPlugin({
         //     template: __dirname + "/public/index.html"
         // }),
-        new webpack.HotModuleReplacementPlugin()
+        // new webpack.HotModuleReplacementPlugin()
     ],
     devServer: {
         colors: true,

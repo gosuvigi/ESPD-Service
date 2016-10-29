@@ -59,7 +59,8 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "node scripts/test.js --env=jsdom",
+    "dev-build": "SET NODE_ENV=development&& webpack -d --display-modules --watch"
   },
   "jest": {
     "moduleFileExtensions": [
@@ -88,5 +89,6 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://localhost:8080",
+  "homepage": "/espd"
 }
