@@ -60,7 +60,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "dev-build": "SET NODE_ENV=development&& webpack -d --display-modules --watch"
+    "dev-build": "SET NODE_ENV=development&& webpack -d --display-modules --watch",
+    "prod-build": "SET NODE_ENV=production&& webpack --config ./config/webpack.config.prod.js --progress"
   },
   "jest": {
     "moduleFileExtensions": [
