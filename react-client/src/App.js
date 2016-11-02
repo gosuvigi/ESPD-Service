@@ -44,7 +44,7 @@ class App extends Component {
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
-                <div>Values from /api:</div>
+                <div>Values from the /api:</div>
                 {
                     this.state.values.map((value, idx) => (
                         <div key={idx}>{value}</div>

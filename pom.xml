@@ -33,7 +33,7 @@
     <modules>
         <module>espd-web</module>
         <module>espd-docs</module>
-        <module>espd-client</module>
+        <module>react-client</module>
     </modules>
 
     <name>ESPD web application</name>

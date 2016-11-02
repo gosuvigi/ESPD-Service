@@ -6,35 +6,28 @@ var autoprefixer = require('autoprefixer');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
-var InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
-var WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
-var getClientEnvironment = require('./config/env');
-var paths = require('./config/paths');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
-var publicPath = '/static/';
 // `publicUrl` is just like `publicPath`, but we will provide it to our app
 // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
 // Omit trailing shlash as %PUBLIC_PATH%/xyz looks better than %PUBLIC_PATH%xyz.
 var publicUrl = '';
 // Get enrivonment variables to inject into our app.
-var env = getClientEnvironment(publicUrl);
 
 module.exports = {
     devtool: 'eval',
     entry: [
-        require.resolve('react-dev-utils/webpackHotDevClient'),
         __dirname + "/src/index.js"
     ],
     output: {
-        path: '../../../target/classes/static/',
+        path: './target/classes/static/',
         // Add /* filename */ comments to generated require()s in the output.
         pathinfo: true,
         // This does not produce a real file. It's just the virtual path that is
         // served by WebpackDevServer in development. This is the JS bundle
         // containing code from all our entry points, and the Webpack runtime.
-        filename: "bundle.js",
+        filename: 'bundle.js',
         // This is the URL that app is served from.
         publicPath: 'http://localhost:8080/espd/'
     },
@@ -46,7 +39,7 @@ module.exports = {
             {
                 test: /\.(js|jsx)$/,
                 loader: 'eslint',
-                include: paths.appSrc,
+                include: 'src'
             }
         ],
         // Process JS with Babel.
@@ -100,22 +93,22 @@ module.exports = {
         // Generates an `index.html` file with the <script> injected.
         new HtmlWebpackPlugin({
             inject: true,
-            template: '../resources/static/index.html',
+            // the ./html folder must be declared as a resource (for Maven in IDE)
+            template: './html/index.html',
         }),
         // Makes some environment variables available to the JS code, for example:
         // if (process.env.NODE_ENV === 'development') { ... }. See `./env.js`.
-        new webpack.DefinePlugin(env),
+        new webpack.DefinePlugin({
+            'process.env': {
+                'NODE_ENV': '"development"'
+            }
+        }),
         // This is necessary to emit hot updates (currently CSS only):
         new webpack.HotModuleReplacementPlugin(),
         // Watcher doesn't work well if you mistype casing in a path so we use
         // a plugin that prints an error when you attempt to do this.
         // See https://github.com/facebookincubator/create-react-app/issues/240
-        new CaseSensitivePathsPlugin(),
-        // If you require a missing module and then `npm install` it, you still have
-        // to restart the development server for Webpack to discover it. This plugin
-        // makes the discovery automatic so you don't have to restart.
-        // See https://github.com/facebookincubator/create-react-app/issues/186
-        new WatchMissingNodeModulesPlugin(paths.appNodeModules)
+        new CaseSensitivePathsPlugin()
     ],
     devServer: {
         colors: true,
