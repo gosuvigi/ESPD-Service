@@ -37,7 +37,7 @@
     "react-redux": "^4.4.5",
     "react-widgets": "^3.4.4",
     "redux": "^3.6.0",
-    "redux-form": "^6.0.5"
+    "redux-form": "^6.2.0"
   },
   "scripts": {
     "dev-build": "SET NODE_ENV=development&& webpack -d --display-modules --watch",
